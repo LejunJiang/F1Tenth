@@ -1,0 +1,3 @@
+Header header
+float64 closest_point
+float64 farthest_point
