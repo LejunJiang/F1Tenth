@@ -7,4 +7,5 @@
 subdirs("gtest")
 subdirs("cartographer_config/f110_description")
 subdirs("lejun_jiang_roslab")
+subdirs("lejun_jiang_roslab_2")
 subdirs("f1tenth_simulator")

@@ -1,0 +1,8 @@
+prefix=/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/devel
+
+Name: lejun_jiang_roslab_2
+Description: Description of lejun_jiang_roslab_2
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

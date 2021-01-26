@@ -480,6 +480,12 @@ gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 interactive_markers_DIR:PATH=/opt/ros/noetic/share/interactive_markers/cmake
 
 //Value Computed by CMake
+lejun_jiang_roslab_2_BINARY_DIR:STATIC=/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/lejun_jiang_roslab_2
+
+//Value Computed by CMake
+lejun_jiang_roslab_2_SOURCE_DIR:STATIC=/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/lejun_jiang_roslab_2
+
+//Value Computed by CMake
 lejun_jiang_roslab_BINARY_DIR:STATIC=/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/lejun_jiang_roslab
 
 //Value Computed by CMake
@@ -705,7 +711,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
