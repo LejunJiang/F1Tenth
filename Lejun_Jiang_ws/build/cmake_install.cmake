@@ -134,6 +134,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/cartographer_config/f110_description/cmake_install.cmake")
   include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/lejun_jiang_roslab/cmake_install.cmake")
   include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/lejun_jiang_roslab_2/cmake_install.cmake")
+  include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/lejun_jiang_roslab_3/cmake_install.cmake")
   include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/f1tenth_simulator/cmake_install.cmake")
 
 endif()

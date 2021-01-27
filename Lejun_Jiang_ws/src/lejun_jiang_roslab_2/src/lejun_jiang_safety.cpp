@@ -34,7 +34,7 @@ public:
         double v_x = odometry_info_local.twist.twist.linear.x;
         double v_y = odometry_info_local.twist.twist.linear.y;
         for (unsigned int i = 0; i < lidar_info_local.ranges.size(); i++) {
-            if (!std::isinf(lidar_info_local.ranges[i]) || !std::isnan(lidar_info_local.ranges[i])) {
+            if (!std::isinf(lidar_info_local.ranges[i]) && !std::isnan(lidar_info_local.ranges[i])) {
                 double distance = lidar_info_local.ranges[i];
                 double angle = lidar_info_local.angle_min + lidar_info_local.angle_increment * i;
                 double distance_derivative = cos(angle) * v_x + sin(angle) * v_y;

@@ -1000,6 +1000,19 @@ actionlib_msgs_generate_messages_eus/fast:
 .PHONY : actionlib_msgs_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named wall_follower
+
+# Build rule for target.
+wall_follower: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 wall_follower
+.PHONY : wall_follower
+
+# fast build rule for target.
+wall_follower/fast:
+	$(MAKE) -f lejun_jiang_roslab_3/CMakeFiles/wall_follower.dir/build.make lejun_jiang_roslab_3/CMakeFiles/wall_follower.dir/build
+.PHONY : wall_follower/fast
+
+#=============================================================================
 # Target rules for targets named random_walk
 
 # Build rule for target.
@@ -1492,6 +1505,7 @@ help:
 	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... nav_msgs_generate_messages_py"
 	@echo "... actionlib_msgs_generate_messages_eus"
+	@echo "... wall_follower"
 	@echo "... random_walk"
 	@echo "... actionlib_generate_messages_py"
 	@echo "... actionlib_generate_messages_nodejs"

@@ -22,7 +22,7 @@ public:
         std_msgs::Float32 farthest_point;
         farthest_point.data = lidar_info.ranges[0];
         for (unsigned int i = 1; i < lidar_info.ranges.size(); i++) {
-            if (!std::isinf(lidar_info.ranges[i]) || !std::isnan(lidar_info.ranges[i])) {
+            if (!std::isinf(lidar_info.ranges[i]) && !std::isnan(lidar_info.ranges[i])) {
                 if (lidar_info.ranges[i] < closest_point.data) closest_point.data = lidar_info.ranges[i];
                 if (lidar_info.ranges[i] > farthest_point.data) farthest_point.data = lidar_info.ranges[i];
             }
