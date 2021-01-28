@@ -29,13 +29,13 @@ public:
     void callback(const sensor_msgs::LaserScan& lidar_info) {
         unsigned int b_indx = (unsigned int)(floor((90.0 / 180.0 * PI - lidar_info.angle_min) / lidar_info.angle_increment));
         double b_angle = 90.0 / 180.0 * PI;
-        double a_angle = 30.0 / 180.0 * PI;
+        double a_angle = 45.0 / 180.0 * PI;
         unsigned int a_indx;
-        if (lidar_info.angle_min > 30.0 / 180.0 * PI) {
+        if (lidar_info.angle_min > 45.0 / 180.0 * PI) {
             a_angle = lidar_info.angle_min;
             a_indx = 0;
         } else {
-            a_indx = (unsigned int)(floor((30.0 / 180.0 * PI - lidar_info.angle_min) / lidar_info.angle_increment));
+            a_indx = (unsigned int)(floor((45.0 / 180.0 * PI - lidar_info.angle_min) / lidar_info.angle_increment));
         }
         // unsigned int c_indx = (unsigned int)(floor((70.0 / 180.0 * PI - lidar_info.angle_min) / lidar_info.angle_increment));
         // double c_angle = 70.0 / 180.0 * PI;
@@ -69,7 +69,8 @@ public:
         // double alpha_2 = atan((c_range * cos(b_angle - c_angle) - b_range) / (c_range * sin(b_angle - c_angle)));
         // alpha = (alpha + alpha_2) / 2.0;
         double d_t = b_range * cos(alpha);
-        double d_t1 = d_t + velocity * del_time * sin(alpha);
+        // double d_t1 = d_t + velocity * del_time * sin(alpha);
+        double d_t1 = d_t + 1.00 * sin(alpha);
         error = DISIRED_DISTANCE_LEFT - d_t1;
         ROS_INFO_STREAM(d_t1);
         ROS_INFO_STREAM(error);

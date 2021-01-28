@@ -28,6 +28,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "lejun_jiang_roslab_2/catkin_generated/package.cmake"
   "lejun_jiang_roslab_3/catkin_generated/ordered_paths.cmake"
   "lejun_jiang_roslab_3/catkin_generated/package.cmake"
+  "lejun_jiang_roslab_4/catkin_generated/ordered_paths.cmake"
+  "lejun_jiang_roslab_4/catkin_generated/package.cmake"
   "/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/devel/share/f1tenth_simulator/cmake/f1tenth_simulator-msg-paths.cmake"
   "/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/devel/share/lejun_jiang_roslab/cmake/lejun_jiang_roslab-msg-paths.cmake"
   "/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/CMakeLists.txt"
@@ -41,6 +43,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/lejun_jiang_roslab_2/package.xml"
   "/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/lejun_jiang_roslab_3/CMakeLists.txt"
   "/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/lejun_jiang_roslab_3/package.xml"
+  "/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/lejun_jiang_roslab_4/CMakeLists.txt"
+  "/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/lejun_jiang_roslab_4/package.xml"
   "/opt/ros/noetic/share/ackermann_msgs/cmake/ackermann_msgs-msg-extras.cmake"
   "/opt/ros/noetic/share/ackermann_msgs/cmake/ackermann_msgsConfig-version.cmake"
   "/opt/ros/noetic/share/ackermann_msgs/cmake/ackermann_msgsConfig.cmake"
@@ -291,6 +295,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "lejun_jiang_roslab/CMakeFiles/CMakeDirectoryInformation.cmake"
   "lejun_jiang_roslab_2/CMakeFiles/CMakeDirectoryInformation.cmake"
   "lejun_jiang_roslab_3/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "lejun_jiang_roslab_4/CMakeFiles/CMakeDirectoryInformation.cmake"
   "f1tenth_simulator/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
@@ -361,6 +366,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "lejun_jiang_roslab_2/CMakeFiles/nav_msgs_generate_messages_py.dir/DependInfo.cmake"
   "lejun_jiang_roslab_2/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/DependInfo.cmake"
   "lejun_jiang_roslab_3/CMakeFiles/wall_follower.dir/DependInfo.cmake"
+  "lejun_jiang_roslab_4/CMakeFiles/reactive_gap_follower.dir/DependInfo.cmake"
   "f1tenth_simulator/CMakeFiles/random_walk.dir/DependInfo.cmake"
   "f1tenth_simulator/CMakeFiles/actionlib_generate_messages_py.dir/DependInfo.cmake"
   "f1tenth_simulator/CMakeFiles/actionlib_generate_messages_nodejs.dir/DependInfo.cmake"
