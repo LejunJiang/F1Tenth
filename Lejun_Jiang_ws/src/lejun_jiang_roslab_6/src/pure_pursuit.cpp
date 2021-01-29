@@ -25,8 +25,8 @@ public:
         pub_3 = n_.advertise<visualization_msgs::Marker>("/dynamic_viz", 1000);
 
         //Topic you want to subscribe
-        sub_ = n_.subscribe("/pf/pose/odom", 1000, &SubscribeAndPublish::callback, this);
-        // sub_ = n_.subscribe("/odom", 1000, &SubscribeAndPublish::callback, this);
+        // sub_ = n_.subscribe("/pf/pose/odom", 1000, &SubscribeAndPublish::callback, this);
+        sub_ = n_.subscribe("/odom", 1000, &SubscribeAndPublish::callback, this);
 
         // read in all the data
         io::CSVReader<3> in("data.csv");
@@ -124,11 +124,11 @@ public:
         ackermann_msgs::AckermannDriveStamped ackermann_drive_result;
         ackermann_drive_result.drive.steering_angle = angle;
         if (std::abs(angle) > 20.0 / 180.0 * PI) {
-            ackermann_drive_result.drive.speed = 5.0;
+            ackermann_drive_result.drive.speed = 0.5;  // 5.0
         } else if (std::abs(angle) > 10.0 / 180.0 * PI) {
-            ackermann_drive_result.drive.speed = 5.0;
+            ackermann_drive_result.drive.speed = 1.0;
         } else {
-            ackermann_drive_result.drive.speed = 5.0;
+            ackermann_drive_result.drive.speed = 1.5;
         }
         pub_1.publish(ackermann_drive_result);
         // ROS_INFO_STREAM(angle);
