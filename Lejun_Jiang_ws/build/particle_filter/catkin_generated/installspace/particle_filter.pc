@@ -1,0 +1,8 @@
+prefix=/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/install
+
+Name: particle_filter
+Description: Description of particle_filter
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: message_runtime rospy sensor_msgs std_msgs

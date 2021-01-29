@@ -1026,17 +1026,82 @@ reactive_gap_follower/fast:
 .PHONY : reactive_gap_follower/fast
 
 #=============================================================================
-# Target rules for targets named random_walk
+# Target rules for targets named pure_pursuit
 
 # Build rule for target.
-random_walk: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 random_walk
-.PHONY : random_walk
+pure_pursuit: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pure_pursuit
+.PHONY : pure_pursuit
 
 # fast build rule for target.
-random_walk/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/random_walk.dir/build.make f1tenth_simulator/CMakeFiles/random_walk.dir/build
-.PHONY : random_walk/fast
+pure_pursuit/fast:
+	$(MAKE) -f lejun_jiang_roslab_6/CMakeFiles/pure_pursuit.dir/build.make lejun_jiang_roslab_6/CMakeFiles/pure_pursuit.dir/build
+.PHONY : pure_pursuit/fast
+
+#=============================================================================
+# Target rules for targets named visualization_msgs_generate_messages_py
+
+# Build rule for target.
+visualization_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualization_msgs_generate_messages_py
+.PHONY : visualization_msgs_generate_messages_py
+
+# fast build rule for target.
+visualization_msgs_generate_messages_py/fast:
+	$(MAKE) -f lejun_jiang_roslab_6/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make lejun_jiang_roslab_6/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
+.PHONY : visualization_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named visualization_msgs_generate_messages_nodejs
+
+# Build rule for target.
+visualization_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualization_msgs_generate_messages_nodejs
+.PHONY : visualization_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+visualization_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f lejun_jiang_roslab_6/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build.make lejun_jiang_roslab_6/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build
+.PHONY : visualization_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named visualization_msgs_generate_messages_eus
+
+# Build rule for target.
+visualization_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualization_msgs_generate_messages_eus
+.PHONY : visualization_msgs_generate_messages_eus
+
+# fast build rule for target.
+visualization_msgs_generate_messages_eus/fast:
+	$(MAKE) -f lejun_jiang_roslab_6/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build.make lejun_jiang_roslab_6/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build
+.PHONY : visualization_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named visualization_msgs_generate_messages_lisp
+
+# Build rule for target.
+visualization_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualization_msgs_generate_messages_lisp
+.PHONY : visualization_msgs_generate_messages_lisp
+
+# fast build rule for target.
+visualization_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f lejun_jiang_roslab_6/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make lejun_jiang_roslab_6/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
+.PHONY : visualization_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named visualization_msgs_generate_messages_cpp
+
+# Build rule for target.
+visualization_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualization_msgs_generate_messages_cpp
+.PHONY : visualization_msgs_generate_messages_cpp
+
+# fast build rule for target.
+visualization_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f lejun_jiang_roslab_6/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build.make lejun_jiang_roslab_6/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build
+.PHONY : visualization_msgs_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named actionlib_generate_messages_py
@@ -1065,17 +1130,17 @@ actionlib_generate_messages_nodejs/fast:
 .PHONY : actionlib_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named f1tenth_simulator_generate_messages_cpp
+# Target rules for targets named f1tenth_simulator_generate_messages
 
 # Build rule for target.
-f1tenth_simulator_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator_generate_messages_cpp
-.PHONY : f1tenth_simulator_generate_messages_cpp
+f1tenth_simulator_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator_generate_messages
+.PHONY : f1tenth_simulator_generate_messages
 
 # fast build rule for target.
-f1tenth_simulator_generate_messages_cpp/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_cpp.dir/build.make f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_cpp.dir/build
-.PHONY : f1tenth_simulator_generate_messages_cpp/fast
+f1tenth_simulator_generate_messages/fast:
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages.dir/build.make f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages.dir/build
+.PHONY : f1tenth_simulator_generate_messages/fast
 
 #=============================================================================
 # Target rules for targets named actionlib_generate_messages_lisp
@@ -1089,19 +1154,6 @@ actionlib_generate_messages_lisp: cmake_check_build_system
 actionlib_generate_messages_lisp/fast:
 	$(MAKE) -f f1tenth_simulator/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make f1tenth_simulator/CMakeFiles/actionlib_generate_messages_lisp.dir/build
 .PHONY : actionlib_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named f1tenth_simulator_generate_messages
-
-# Build rule for target.
-f1tenth_simulator_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator_generate_messages
-.PHONY : f1tenth_simulator_generate_messages
-
-# fast build rule for target.
-f1tenth_simulator_generate_messages/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages.dir/build.make f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages.dir/build
-.PHONY : f1tenth_simulator_generate_messages/fast
 
 #=============================================================================
 # Target rules for targets named tf2_msgs_generate_messages_nodejs
@@ -1143,17 +1195,17 @@ tf2_msgs_generate_messages_eus/fast:
 .PHONY : tf2_msgs_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named visualization_msgs_generate_messages_py
+# Target rules for targets named random_walk
 
 # Build rule for target.
-visualization_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 visualization_msgs_generate_messages_py
-.PHONY : visualization_msgs_generate_messages_py
+random_walk: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 random_walk
+.PHONY : random_walk
 
 # fast build rule for target.
-visualization_msgs_generate_messages_py/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make f1tenth_simulator/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
-.PHONY : visualization_msgs_generate_messages_py/fast
+random_walk/fast:
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/random_walk.dir/build.make f1tenth_simulator/CMakeFiles/random_walk.dir/build
+.PHONY : random_walk/fast
 
 #=============================================================================
 # Target rules for targets named tf2_msgs_generate_messages_lisp
@@ -1182,6 +1234,19 @@ f1tenth_simulator_generate_messages_nodejs/fast:
 .PHONY : f1tenth_simulator_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named f1tenth_simulator_generate_messages_cpp
+
+# Build rule for target.
+f1tenth_simulator_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator_generate_messages_cpp
+.PHONY : f1tenth_simulator_generate_messages_cpp
+
+# fast build rule for target.
+f1tenth_simulator_generate_messages_cpp/fast:
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_cpp.dir/build.make f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_cpp.dir/build
+.PHONY : f1tenth_simulator_generate_messages_cpp/fast
+
+#=============================================================================
 # Target rules for targets named behavior_controller
 
 # Build rule for target.
@@ -1193,19 +1258,6 @@ behavior_controller: cmake_check_build_system
 behavior_controller/fast:
 	$(MAKE) -f f1tenth_simulator/CMakeFiles/behavior_controller.dir/build.make f1tenth_simulator/CMakeFiles/behavior_controller.dir/build
 .PHONY : behavior_controller/fast
-
-#=============================================================================
-# Target rules for targets named visualization_msgs_generate_messages_eus
-
-# Build rule for target.
-visualization_msgs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 visualization_msgs_generate_messages_eus
-.PHONY : visualization_msgs_generate_messages_eus
-
-# fast build rule for target.
-visualization_msgs_generate_messages_eus/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build.make f1tenth_simulator/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build
-.PHONY : visualization_msgs_generate_messages_eus/fast
 
 #=============================================================================
 # Target rules for targets named tf2_msgs_generate_messages_py
@@ -1260,19 +1312,6 @@ tf2_msgs_generate_messages_cpp/fast:
 .PHONY : tf2_msgs_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named visualization_msgs_generate_messages_cpp
-
-# Build rule for target.
-visualization_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 visualization_msgs_generate_messages_cpp
-.PHONY : visualization_msgs_generate_messages_cpp
-
-# fast build rule for target.
-visualization_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build.make f1tenth_simulator/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build
-.PHONY : visualization_msgs_generate_messages_cpp/fast
-
-#=============================================================================
 # Target rules for targets named actionlib_generate_messages_eus
 
 # Build rule for target.
@@ -1297,45 +1336,6 @@ f1tenth_simulator: cmake_check_build_system
 f1tenth_simulator/fast:
 	$(MAKE) -f f1tenth_simulator/CMakeFiles/f1tenth_simulator.dir/build.make f1tenth_simulator/CMakeFiles/f1tenth_simulator.dir/build
 .PHONY : f1tenth_simulator/fast
-
-#=============================================================================
-# Target rules for targets named simulator
-
-# Build rule for target.
-simulator: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 simulator
-.PHONY : simulator
-
-# fast build rule for target.
-simulator/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/build
-.PHONY : simulator/fast
-
-#=============================================================================
-# Target rules for targets named visualization_msgs_generate_messages_nodejs
-
-# Build rule for target.
-visualization_msgs_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 visualization_msgs_generate_messages_nodejs
-.PHONY : visualization_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-visualization_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build.make f1tenth_simulator/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build
-.PHONY : visualization_msgs_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named visualization_msgs_generate_messages_lisp
-
-# Build rule for target.
-visualization_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 visualization_msgs_generate_messages_lisp
-.PHONY : visualization_msgs_generate_messages_lisp
-
-# fast build rule for target.
-visualization_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make f1tenth_simulator/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
-.PHONY : visualization_msgs_generate_messages_lisp/fast
 
 #=============================================================================
 # Target rules for targets named f1tenth_simulator_gencpp
@@ -1375,6 +1375,19 @@ f1tenth_simulator_generate_messages_py: cmake_check_build_system
 f1tenth_simulator_generate_messages_py/fast:
 	$(MAKE) -f f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_py.dir/build.make f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_py.dir/build
 .PHONY : f1tenth_simulator_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named simulator
+
+# Build rule for target.
+simulator: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simulator
+.PHONY : simulator
+
+# fast build rule for target.
+simulator/fast:
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/build
+.PHONY : simulator/fast
 
 #=============================================================================
 # Target rules for targets named f1tenth_simulator_geneus
@@ -1440,6 +1453,71 @@ keyboard: cmake_check_build_system
 keyboard/fast:
 	$(MAKE) -f f1tenth_simulator/CMakeFiles/keyboard.dir/build.make f1tenth_simulator/CMakeFiles/keyboard.dir/build
 .PHONY : keyboard/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_py
+
+# Build rule for target.
+tf_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_py
+.PHONY : tf_generate_messages_py
+
+# fast build rule for target.
+tf_generate_messages_py/fast:
+	$(MAKE) -f waypoint_logger/CMakeFiles/tf_generate_messages_py.dir/build.make waypoint_logger/CMakeFiles/tf_generate_messages_py.dir/build
+.PHONY : tf_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_nodejs
+
+# Build rule for target.
+tf_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_nodejs
+.PHONY : tf_generate_messages_nodejs
+
+# fast build rule for target.
+tf_generate_messages_nodejs/fast:
+	$(MAKE) -f waypoint_logger/CMakeFiles/tf_generate_messages_nodejs.dir/build.make waypoint_logger/CMakeFiles/tf_generate_messages_nodejs.dir/build
+.PHONY : tf_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_lisp
+
+# Build rule for target.
+tf_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_lisp
+.PHONY : tf_generate_messages_lisp
+
+# fast build rule for target.
+tf_generate_messages_lisp/fast:
+	$(MAKE) -f waypoint_logger/CMakeFiles/tf_generate_messages_lisp.dir/build.make waypoint_logger/CMakeFiles/tf_generate_messages_lisp.dir/build
+.PHONY : tf_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_eus
+
+# Build rule for target.
+tf_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_eus
+.PHONY : tf_generate_messages_eus
+
+# fast build rule for target.
+tf_generate_messages_eus/fast:
+	$(MAKE) -f waypoint_logger/CMakeFiles/tf_generate_messages_eus.dir/build.make waypoint_logger/CMakeFiles/tf_generate_messages_eus.dir/build
+.PHONY : tf_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_cpp
+
+# Build rule for target.
+tf_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_cpp
+.PHONY : tf_generate_messages_cpp
+
+# fast build rule for target.
+tf_generate_messages_cpp/fast:
+	$(MAKE) -f waypoint_logger/CMakeFiles/tf_generate_messages_cpp.dir/build.make waypoint_logger/CMakeFiles/tf_generate_messages_cpp.dir/build
+.PHONY : tf_generate_messages_cpp/fast
 
 # Help Target
 help:
@@ -1520,38 +1598,44 @@ help:
 	@echo "... actionlib_msgs_generate_messages_eus"
 	@echo "... wall_follower"
 	@echo "... reactive_gap_follower"
-	@echo "... random_walk"
+	@echo "... pure_pursuit"
+	@echo "... visualization_msgs_generate_messages_py"
+	@echo "... visualization_msgs_generate_messages_nodejs"
+	@echo "... visualization_msgs_generate_messages_eus"
+	@echo "... visualization_msgs_generate_messages_lisp"
+	@echo "... visualization_msgs_generate_messages_cpp"
 	@echo "... actionlib_generate_messages_py"
 	@echo "... actionlib_generate_messages_nodejs"
-	@echo "... f1tenth_simulator_generate_messages_cpp"
-	@echo "... actionlib_generate_messages_lisp"
 	@echo "... f1tenth_simulator_generate_messages"
+	@echo "... actionlib_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_cpp"
 	@echo "... tf2_msgs_generate_messages_eus"
-	@echo "... visualization_msgs_generate_messages_py"
+	@echo "... random_walk"
 	@echo "... tf2_msgs_generate_messages_lisp"
 	@echo "... f1tenth_simulator_generate_messages_nodejs"
+	@echo "... f1tenth_simulator_generate_messages_cpp"
 	@echo "... behavior_controller"
-	@echo "... visualization_msgs_generate_messages_eus"
 	@echo "... tf2_msgs_generate_messages_py"
 	@echo "... f1tenth_simulator_generate_messages_lisp"
 	@echo "... f1tenth_simulator_gennodejs"
 	@echo "... tf2_msgs_generate_messages_cpp"
-	@echo "... visualization_msgs_generate_messages_cpp"
 	@echo "... actionlib_generate_messages_eus"
 	@echo "... f1tenth_simulator"
-	@echo "... simulator"
-	@echo "... visualization_msgs_generate_messages_nodejs"
-	@echo "... visualization_msgs_generate_messages_lisp"
 	@echo "... f1tenth_simulator_gencpp"
 	@echo "... mux"
 	@echo "... f1tenth_simulator_generate_messages_py"
+	@echo "... simulator"
 	@echo "... f1tenth_simulator_geneus"
 	@echo "... f1tenth_simulator_generate_messages_eus"
 	@echo "... f1tenth_simulator_genlisp"
 	@echo "... f1tenth_simulator_genpy"
 	@echo "... keyboard"
+	@echo "... tf_generate_messages_py"
+	@echo "... tf_generate_messages_nodejs"
+	@echo "... tf_generate_messages_lisp"
+	@echo "... tf_generate_messages_eus"
+	@echo "... tf_generate_messages_cpp"
 .PHONY : help
 
 
