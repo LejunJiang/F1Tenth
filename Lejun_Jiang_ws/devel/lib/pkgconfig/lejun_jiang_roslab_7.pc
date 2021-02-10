@@ -1,0 +1,8 @@
+prefix=/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/devel
+
+Name: lejun_jiang_roslab_7
+Description: Description of lejun_jiang_roslab_7
+Version: 0.0.0
+Cflags: -I/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/lejun_jiang_roslab_7/include
+Libs: -L${prefix}/lib -llejun_jiang_roslab_7
+Requires: ackermann_msgs geometry_msgs nav_msgs roscpp rospy sensor_msgs std_msgs visualization_msgs tf

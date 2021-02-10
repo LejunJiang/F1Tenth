@@ -138,6 +138,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/lejun_jiang_roslab_4/cmake_install.cmake")
   include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/lejun_jiang_roslab_6/cmake_install.cmake")
   include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/particle_filter/cmake_install.cmake")
+  include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/lejun_jiang_roslab_7/cmake_install.cmake")
   include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/f1tenth_simulator/cmake_install.cmake")
   include("/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/build/waypoint_logger/cmake_install.cmake")
 
