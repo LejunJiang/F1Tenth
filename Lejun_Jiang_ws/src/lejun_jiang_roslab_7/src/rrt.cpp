@@ -10,9 +10,10 @@
 
 #define STEER_LENGTH 0.30
 #define TERMINATE_LENGTH 0.10
-#define LOOKAHEAD_DISTANCE 1.00
+#define LOOKAHEAD_DISTANCE 0.60
 #define KP 1.00
 #define PI 3.1415927
+#define ETA 0.80
 
 // convert global frame to grid frame
 std::vector<unsigned int> convert_frame(double x_global, double y_global, double x_off = 14.50, double y_off = 0.70) {
@@ -36,7 +37,7 @@ RRT::~RRT() {
 }
 
 // Constructor of the RRT class
-RRT::RRT(ros::NodeHandle &nh) : nh_(nh), gen((std::random_device())()) {
+RRT::RRT(ros::NodeHandle &nh, RRT_type rrt_Type) : nh_(nh), gen((std::random_device())()), rrt_type(rrt_Type) {
     // TODO: Load parameters from yaml file, you could add your own parameters to the rrt_params.yaml file
     std::string pose_topic, scan_topic;
     // nh_.getParam("pose_topic", pose_topic);
@@ -206,6 +207,23 @@ void RRT::pf_callback(const nav_msgs::Odometry &odometry_info) {
         Node new_node = steer(tree[nearest_point], sampled_point);
         new_node.parent = nearest_point;
         if (!check_collision(tree[nearest_point], new_node)) {
+            if (rrt_type == RRT_type::RRT_star) {
+                std::vector<int> near_set = near(tree, new_node);
+                double min_cost = cost(tree, tree[nearest_point]) + line_cost(new_node, tree[nearest_point]);
+                for (unsigned int j = 0; j < near_set.size(); j++) {
+                    if ((!check_collision(tree[near_set[j]], new_node)) && (cost(tree, tree[near_set[j]]) + line_cost(new_node, tree[near_set[j]]) < min_cost)) {
+                        new_node.parent = near_set[j];
+                        min_cost = cost(tree, tree[near_set[j]]) + line_cost(new_node, tree[near_set[j]]);
+                    }
+                }
+                new_node.cost = min_cost;
+                for (unsigned int j = 0; j < near_set.size(); j++) {
+                    if ((!check_collision(tree[near_set[j]], new_node)) && (min_cost + line_cost(new_node, tree[near_set[j]]) < cost(tree, tree[near_set[j]]))) {
+                        tree[near_set[j]].parent = tree.size();
+                        tree[near_set[j]].cost = min_cost + line_cost(new_node, tree[near_set[j]]);
+                    }
+                }
+            }
             tree.push_back(new_node);
             points.x = new_node.x;
             points.y = new_node.y;
@@ -354,7 +372,7 @@ unsigned int RRT::nearest(std::vector<Node> &tree, std::vector<double> &sampled_
     // TODO: fill in this method
     double min_distance = std::pow((tree[0].x - sampled_point[0]), 2) + std::pow((tree[0].y - sampled_point[1]), 2);
     for (unsigned int ite = 1; ite < tree.size(); ite++) {
-        if (std::pow((tree[ite].x - sampled_point[0]), 2) + std::pow((tree[ite].y - sampled_point[1]), 2)) {
+        if (std::pow((tree[ite].x - sampled_point[0]), 2) + std::pow((tree[ite].y - sampled_point[1]), 2) < min_distance) {
             min_distance = std::pow((tree[ite].x - sampled_point[0]), 2) + std::pow((tree[ite].y - sampled_point[1]), 2);
             nearest_node = ite;
         }
@@ -475,7 +493,7 @@ double RRT::cost(std::vector<Node> &tree, Node &node) {
 
     double cost = 0;
     // TODO: fill in this method
-
+    cost = node.cost;
     return cost;
 }
 
@@ -489,7 +507,7 @@ double RRT::line_cost(Node &n1, Node &n2) {
 
     double cost = 0;
     // TODO: fill in this method
-
+    cost = std::sqrt(std::pow((n1.x - n2.x), 2) + std::pow((n1.y - n2.y), 2));
     return cost;
 }
 
@@ -504,6 +522,10 @@ std::vector<int> RRT::near(std::vector<Node> &tree, Node &node) {
 
     std::vector<int> neighborhood;
     // TODO:: fill in this method
-
+    for (unsigned int ite = 0; ite < tree.size(); ite++) {
+        if (std::sqrt(std::pow((tree[ite].x - node.x), 2) + std::pow((tree[ite].y - node.y), 2)) < ETA) {
+            neighborhood.push_back(ite);
+        }
+    }
     return neighborhood;
 }

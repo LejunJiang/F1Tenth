@@ -32,6 +32,11 @@
 #include <string>
 #include <vector>
 
+enum RRT_type {
+    RRT_base,
+    RRT_star
+};
+
 // Struct defining the Node object in the RRT tree.
 // More fields could be added to this struct if more info needed.
 // You can choose to use this or not
@@ -49,7 +54,7 @@ typedef struct Edge {
 
 class RRT {
 public:
-    RRT(ros::NodeHandle &nh);
+    RRT(ros::NodeHandle &nh, RRT_type rrt_Type);
     virtual ~RRT();
 
 private:
@@ -94,6 +99,7 @@ private:
     visualization_msgs::Marker marker_2;
     visualization_msgs::Marker marker_3;
     visualization_msgs::Marker marker_4;
+    RRT_type rrt_type;
 
     // function for control
     void reactive_control();
