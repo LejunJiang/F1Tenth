@@ -1,9 +1,8 @@
-// ESE 680
-// RRT assignment
-// Author: Hongrui Zheng
+// RRT and RRT star implementation
+// Author: Lejun Jiang, Hongrui Zheng
 
 // This file contains the node definition for RRT
-// Before you start, please read: https://arxiv.org/pdf/1105.1186.pdf
+// Reference: https://arxiv.org/pdf/1105.1186.pdf
 
 #include "lejun_jiang_roslab_7/rrt.h"
 

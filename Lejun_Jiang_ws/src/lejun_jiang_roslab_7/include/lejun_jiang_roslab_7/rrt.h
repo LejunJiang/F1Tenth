@@ -1,9 +1,8 @@
-// ESE 680
-// RRT assignment
-// Author: Hongrui Zheng
+// RRT and RRT star implementation
+// Author: Lejun Jiang, Hongrui Zheng
 
 // This file contains the class definition of tree nodes and RRT
-// Before you start, please read: https://arxiv.org/pdf/1105.1186.pdf
+// Reference: https://arxiv.org/pdf/1105.1186.pdf
 
 // ros
 #include <ackermann_msgs/AckermannDriveStamped.h>
@@ -76,7 +75,8 @@ private:
     tf::TransformListener listener;
 
     // RRT params
-    std::vector<std::vector<bool>> occupancy_grids;  // vector occupancy grid
+    std::vector<std::vector<bool>> occupancy_grids;        // vector occupancy grid
+    std::vector<std::vector<bool>> occupancy_grids_prior;  // prior of vector occupancy grid
     // parameters of occupancy grid
     unsigned int x_offset = 290;
     unsigned int y_offset = 14;
@@ -99,6 +99,9 @@ private:
     // parameters for the current car's way point
     double x_target;
     double y_target;
+    // current car location
+    double x_current;
+    double y_current;
     // markers for visualization
     visualization_msgs::Marker marker;
     visualization_msgs::Marker marker_2;
@@ -120,7 +123,7 @@ private:
     // where rrt actually happens
     void pf_callback(const nav_msgs::Odometry &odometry_info);
     // updates occupancy grid
-    void scan_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg);
+    void scan_callback(const sensor_msgs::LaserScan &scan_msg);
 
     // RRT methods
     std::vector<double> sample();
