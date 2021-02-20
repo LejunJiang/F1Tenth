@@ -32,6 +32,7 @@
 #include <string>
 #include <vector>
 
+// enum type for the switch between RRT and RRT*
 enum RRT_type {
     RRT_base,
     RRT_star
@@ -61,7 +62,7 @@ private:
     ros::NodeHandle nh_;
 
     // ros pub/sub
-    // TODO: add the publishers and subscribers you need
+    // add the publishers and subscribers you need
 
     ros::Publisher drive_pub_;
     ros::Publisher mapvisual_pub_;
@@ -74,8 +75,9 @@ private:
     // tf stuff
     tf::TransformListener listener;
 
-    // TODO: create RRT params
-    std::vector<std::vector<bool>> occupancy_grids;
+    // RRT params
+    std::vector<std::vector<bool>> occupancy_grids;  // vector occupancy grid
+    // parameters of occupancy grid
     unsigned int x_offset = 290;
     unsigned int y_offset = 14;
     unsigned int y_rr = 1;
@@ -86,22 +88,27 @@ private:
     unsigned int x_tb = 472;
     unsigned int x_bb = 5;
     unsigned int x_bt = 24;
+    // current goal point
     double x_goal;
     double y_goal;
+    // parameters for the sample space
     double x_limit_top;
     double x_limit_bot;
     double y_limit_left;
     double y_limit_right;
+    // parameters for the current car's way point
     double x_target;
     double y_target;
-    double angle, heading_current;
+    // markers for visualization
     visualization_msgs::Marker marker;
     visualization_msgs::Marker marker_2;
     visualization_msgs::Marker marker_3;
     visualization_msgs::Marker marker_4;
+    // defines RRT type
     RRT_type rrt_type;
 
     // function for control
+    double angle, heading_current;
     void reactive_control();
 
     // random generator, use this

@@ -8,12 +8,14 @@
 
 #include "lejun_jiang_roslab_7/rrt.h"
 
+// define parameters here
 #define STEER_LENGTH 0.30
 #define TERMINATE_LENGTH 0.10
 #define LOOKAHEAD_DISTANCE 0.60
 #define KP 1.00
 #define PI 3.1415927
-#define ETA 0.80
+#define ETA 0.60
+#define MAX_ITERATION 100
 
 // convert global frame to grid frame
 std::vector<unsigned int> convert_frame(double x_global, double y_global, double x_off = 14.50, double y_off = 0.70) {
@@ -38,15 +40,15 @@ RRT::~RRT() {
 
 // Constructor of the RRT class
 RRT::RRT(ros::NodeHandle &nh, RRT_type rrt_Type) : nh_(nh), gen((std::random_device())()), rrt_type(rrt_Type) {
-    // TODO: Load parameters from yaml file, you could add your own parameters to the rrt_params.yaml file
-    std::string pose_topic, scan_topic;
+    // Skipped: Load parameters from yaml file, you could add your own parameters to the rrt_params.yaml file
     // nh_.getParam("pose_topic", pose_topic);
     // nh_.getParam("scan_topic", scan_topic);
+    std::string pose_topic, scan_topic;
     pose_topic = "/odom";
     scan_topic = "/scan";
 
     // ROS publishers
-    // TODO: create publishers for the the drive topic, and other topics you might need
+    // create publishers for the the drive topic, and other topics you might need
     drive_pub_ = nh_.advertise<ackermann_msgs::AckermannDriveStamped>("/nav", 1000);
     mapvisual_pub_ = nh_.advertise<visualization_msgs::Marker>("/env_viz", 1000);
     points_pub_ = nh_.advertise<visualization_msgs::Marker>("/dynamic_viz", 1000);
@@ -54,35 +56,35 @@ RRT::RRT(ros::NodeHandle &nh, RRT_type rrt_Type) : nh_(nh), gen((std::random_dev
     edges_pub_ = nh_.advertise<visualization_msgs::Marker>("/tree_lines", 1000);
 
     // ROS subscribers
-    // TODO: create subscribers as you need
+    // create subscribers as you need
     pf_sub_ = nh_.subscribe(pose_topic, 10, &RRT::pf_callback, this);
     scan_sub_ = nh_.subscribe(scan_topic, 10, &RRT::scan_callback, this);
 
-    // TODO: create a occupancy grid
+    // create an occupancy grid
     occupancy_grids = std::vector<std::vector<bool>>(500, std::vector<bool>(200, true));
 
     // set the occupancy grid according to knowledge about the levine hall
-    for (unsigned int i = 0; i <= y_rr; i++) {
+    for (unsigned int i = 0; i <= y_rr; i++) {  // right wall
         for (unsigned int j = 0; j < occupancy_grids.size(); j++) {
             occupancy_grids[j][i] = false;
         }
     }
-    for (unsigned int i = y_ll; i < occupancy_grids[0].size(); i++) {
+    for (unsigned int i = y_ll; i < occupancy_grids[0].size(); i++) {  // left wall
         for (unsigned int j = 0; j < occupancy_grids.size(); j++) {
             occupancy_grids[j][i] = false;
         }
     }
-    for (unsigned int i = 0; i < occupancy_grids[0].size(); i++) {
+    for (unsigned int i = 0; i < occupancy_grids[0].size(); i++) {  // bot wall
         for (unsigned int j = 0; j <= x_bb; j++) {
             occupancy_grids[j][i] = false;
         }
     }
-    for (unsigned int i = 0; i < occupancy_grids[0].size(); i++) {
+    for (unsigned int i = 0; i < occupancy_grids[0].size(); i++) {  // upper wall
         for (unsigned int j = x_tt; j < occupancy_grids.size(); j++) {
             occupancy_grids[j][i] = false;
         }
     }
-    for (unsigned int i = y_rl; i <= y_lr; i++) {
+    for (unsigned int i = y_rl; i <= y_lr; i++) {  // inner parts
         for (unsigned int j = x_bt; j <= x_tb; j++) {
             occupancy_grids[j][i] = false;
         }
@@ -108,38 +110,12 @@ void RRT::pf_callback(const nav_msgs::Odometry &odometry_info) {
     //    pose_msg (*PoseStamped): pointer to the incoming pose message
     // Returns:
     //
+
+    // fetch the current location, can be done by a particle filter
     double x_current = odometry_info.pose.pose.position.x;
     double y_current = odometry_info.pose.pose.position.y;
-    // set the global goal point
-    // if (x_current <= 8.00 && y_current <= 1.34) {  // on the right side of the loop
-    //     x_goal = x_current + 1.30;
-    //     y_goal = -0.145;
-    //     x_limit_top = x_current + 1.50;
-    //     x_limit_bot = x_current;
-    //     y_limit_left = 0.37;
-    //     y_limit_right = -0.66;
-    // } else if (x_current > 8.00 && y_current <= 7.15) {  // on the top side of the loop
-    //     x_goal = 9.575;
-    //     y_goal = y_current + 1.30;
-    //     x_limit_top = 10.03;
-    //     x_limit_bot = 9.12;
-    //     y_limit_left = y_current + 1.50;
-    //     y_limit_right = y_current;
-    // } else if (x_current >= -12.26 && y_current > 7.15) {  // on the left side of the loop
-    //     x_goal = x_current - 1.30;
-    //     y_goal = 8.65;
-    //     x_limit_top = x_current;
-    //     x_limit_bot = x_current - 1.50;
-    //     y_limit_left = 9.15;
-    //     y_limit_right = 8.15;
-    // } else if (x_current < -12.26 && y_current > 1.34) {  // on the bottom side of the loop
-    //     x_goal = -13.79;
-    //     y_goal = y_current - 1.30;
-    //     x_limit_top = -13.32;
-    //     x_limit_bot = -14.26;
-    //     y_limit_left = y_current;
-    //     y_limit_right = y_current - 1.50;
-    // }
+
+    // set the global goal point depending on the car's location
     if (x_current <= 7.00 && y_current <= 2.34) {  // on the right side of the loop
         x_goal = x_current + 2.30;
         y_goal = -0.145;
@@ -169,17 +145,20 @@ void RRT::pf_callback(const nav_msgs::Odometry &odometry_info) {
         y_limit_left = y_current;
         y_limit_right = y_current - 2.50;
     }
+
     // tree as std::vector
     std::vector<Node> tree;
 
-    // TODO: fill in the RRT main loop
+    // the RRT main loop
+
+    // define the starter node
     Node start;
     start.x = x_current;
     start.y = y_current;
     start.is_root = true;
     tree.push_back(start);
 
-    // For drawing
+    // For drawing the sampled points
     marker.points.clear();
     marker.header.frame_id = "map";
     marker.header.stamp = ros::Time();
@@ -195,18 +174,25 @@ void RRT::pf_callback(const nav_msgs::Odometry &odometry_info) {
     marker.pose.orientation.w = 1.0;
     marker.scale.x = 0.01;
     marker.scale.y = 0.01;
-    marker.color.a = 1.0;  // Don't forget to set the alpha!
+    marker.color.a = 1.0;
     marker.color.r = 0.0;
     marker.color.g = 0.0;
     marker.color.b = 1.0;
+
+    // points to be added for plotting
     geometry_msgs::Point points;
+
+    // vector to store the final path
     std::vector<Node> paths;
-    for (unsigned int i = 0; i < 100; i++) {
+
+    // each loop creates a new sample in the space
+    for (unsigned int i = 0; i < MAX_ITERATION; i++) {
         std::vector<double> sampled_point = sample();
         unsigned int nearest_point = nearest(tree, sampled_point);
         Node new_node = steer(tree[nearest_point], sampled_point);
         new_node.parent = nearest_point;
         if (!check_collision(tree[nearest_point], new_node)) {
+            // if algorithm RRT* star is chosen, the block in the if statement is performed
             if (rrt_type == RRT_type::RRT_star) {
                 std::vector<int> near_set = near(tree, new_node);
                 double min_cost = cost(tree, tree[nearest_point]) + line_cost(new_node, tree[nearest_point]);
@@ -224,6 +210,7 @@ void RRT::pf_callback(const nav_msgs::Odometry &odometry_info) {
                     }
                 }
             }
+
             tree.push_back(new_node);
             points.x = new_node.x;
             points.y = new_node.y;
@@ -253,7 +240,10 @@ void RRT::pf_callback(const nav_msgs::Odometry &odometry_info) {
     angle = KP * 2.00 * del_y / (real_distance * real_distance);
     reactive_control();
 
+    // publish the sampled points to be visualized in rviz
     mapvisual_pub_.publish(marker);
+
+    // publish the global goal point to be visualized in rviz
     marker_2.points.clear();
     points.x = x_goal;
     points.y = y_goal;
@@ -279,6 +269,7 @@ void RRT::pf_callback(const nav_msgs::Odometry &odometry_info) {
     marker_2.color.b = 0.0;
     points_pub_.publish(marker_2);
 
+    // publish the target way point to be visualized in rviz
     marker_3.points.clear();
     points.x = x_target;
     points.y = y_target;
@@ -304,6 +295,7 @@ void RRT::pf_callback(const nav_msgs::Odometry &odometry_info) {
     marker_3.color.b = 0.0;
     waypoint_pub_.publish(marker_3);
 
+    // publish the paths to be visualized in rviz
     marker_4.header.frame_id = "map";
     marker_4.header.stamp = ros::Time();
     marker_4.id = 0;

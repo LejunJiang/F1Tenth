@@ -56,10 +56,6 @@ vector
 lejun_jiang_roslab_7/rrt.h
 /home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/lejun_jiang_roslab_7/src/lejun_jiang_roslab_7/rrt.h
 
-/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/lejun_jiang_roslab_7/src/rrt_node.cpp
-lejun_jiang_roslab_7/rrt.h
-/home/lejunj/Codes/F1Tenth/Lejun_Jiang_ws/src/lejun_jiang_roslab_7/src/lejun_jiang_roslab_7/rrt.h
-
 /opt/ros/noetic/include/ackermann_msgs/AckermannDrive.h
 string
 -
