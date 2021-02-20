@@ -4,3 +4,6 @@
 [submodule "Lejun_Jiang_ws/src/particle_filter"]
 	path = Lejun_Jiang_ws/src/particle_filter
 	url = https://github.com/LejunJiang/particle_filter.git
+[submodule "Lejun_Jiang_ws/src/f1tenth_simulator"]
+	path = Lejun_Jiang_ws/src/f1tenth_simulator
+	url = https://github.com/LejunJiang/f1tenth_simulator.git
